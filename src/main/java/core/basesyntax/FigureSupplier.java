@@ -1,5 +1,7 @@
 package core.basesyntax;
+
 import java.util.Random;
+
 public class FigureSupplier {
     public static final int PARAMS_BOUND = 100;
     public static final int DEFAULT_RADIUS = 10;

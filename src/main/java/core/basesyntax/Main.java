@@ -1,5 +1,4 @@
 package core.basesyntax;
-
 public class Main {
     public static final int RANDOM_FIGURES_AMOUNT = 3;
     public static final int TOTAL_FIGURES_AMOUNT = 6;

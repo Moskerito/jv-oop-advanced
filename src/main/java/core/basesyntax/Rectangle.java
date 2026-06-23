@@ -1,17 +1,16 @@
 package core.basesyntax;
-
 public class Rectangle extends Figure {
     private int height;
     private int width;
 
-    public Rectangle(int height, int width, Color color) {
+    public Rectangle(int height, int width, String color) {
         this.height = height;
         this.width = width;
-        setColor(color);;
+        setColor(Color.valueOf(color));
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return height * width;
     }
 

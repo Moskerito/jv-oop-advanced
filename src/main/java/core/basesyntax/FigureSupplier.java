@@ -1,7 +1,5 @@
 package core.basesyntax;
-
 import java.util.Random;
-
 public class FigureSupplier {
     public static final int PARAMS_BOUND = 100;
     public static final int DEFAULT_RADIUS = 10;
@@ -11,21 +9,36 @@ public class FigureSupplier {
 
     public Figure getRandomFigure() {
         int figureIndex = random.nextInt(INDEX_BOUND);
-        return switch (figureIndex) {
-            case 0 -> new Circle(random.nextInt(PARAMS_BOUND), colorSupplier.getRandomColor());
-            case 1 -> new IsoscelesTrapezoid(random.nextInt(PARAMS_BOUND),
-                    random.nextInt(PARAMS_BOUND), random.nextInt(PARAMS_BOUND),
-                    colorSupplier.getRandomColor());
-            case 2 -> new Rectangle(random.nextInt(PARAMS_BOUND), random.nextInt(PARAMS_BOUND),
-                    colorSupplier.getRandomColor());
-            case 3 -> new RightTriangle(random.nextInt(PARAMS_BOUND), random.nextInt(PARAMS_BOUND),
-                    colorSupplier.getRandomColor());
-            case 4 -> new Square(random.nextInt(PARAMS_BOUND), colorSupplier.getRandomColor());
-            default -> throw new IllegalArgumentException("Unknown figure type: " + figureIndex);
-        };
+        switch (figureIndex) {
+            case 0: {
+                int radius = random.nextInt(PARAMS_BOUND);
+                return new Circle(radius, colorSupplier.getRandomColor());
+            }
+            case 1: {
+                int base1 = random.nextInt(PARAMS_BOUND);
+                int base2 = random.nextInt(PARAMS_BOUND);
+                int side = random.nextInt(PARAMS_BOUND);
+                return new IsoscelesTrapezoid(base1, base2, side, colorSupplier.getRandomColor());
+            }
+            case 2: {
+                int heigth = random.nextInt(PARAMS_BOUND);
+                int width = random.nextInt(PARAMS_BOUND);
+                return new Rectangle(heigth, width, colorSupplier.getRandomColor());
+            }
+            case 3: {
+                int leg1 = random.nextInt(PARAMS_BOUND);
+                int leg2 = random.nextInt(PARAMS_BOUND);
+                return new RightTriangle(leg1, leg2, colorSupplier.getRandomColor());
+            }
+            case 4: {
+                int side = random.nextInt(PARAMS_BOUND);
+                return new Square(side, colorSupplier.getRandomColor());
+            }
+            default: throw new IllegalArgumentException("Unknown figure type: " + figureIndex);
+        }
     }
 
     public Figure getDefaultFigure() {
-        return new Circle(DEFAULT_RADIUS, Color.WHITE);
+        return new Circle(DEFAULT_RADIUS, "WHITE");
     }
 }

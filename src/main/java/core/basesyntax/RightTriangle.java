@@ -1,17 +1,16 @@
 package core.basesyntax;
-
 public class RightTriangle extends Figure {
     private int leg1;
     private int leg2;
 
-    public RightTriangle(int leg1, int leg2, Color color) {
+    public RightTriangle(int leg1, int leg2, String color) {
         this.leg1 = leg1;
         this.leg2 = leg2;
-        setColor(color);
+        setColor(Color.valueOf(color));
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return (double) (leg1 * leg2) / 2;
     }
 

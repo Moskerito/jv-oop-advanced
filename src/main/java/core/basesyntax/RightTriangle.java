@@ -4,6 +4,12 @@ public class RightTriangle extends Figure {
     private int leg1;
     private int leg2;
 
+    public RightTriangle(int leg1, int leg2, Color color) {
+        this.leg1 = leg1;
+        this.leg2 = leg2;
+        setColor(color);
+    }
+
     @Override
     double getArea() {
         return (double) (leg1 * leg2) / 2;
@@ -11,7 +17,7 @@ public class RightTriangle extends Figure {
 
     @Override
     public void draw() {
-        System.out.println("This is a right triangle with legs " + leg1 + " and " + leg2
-        + " and area " + getArea());
+        System.out.println("Figure: triangle, area: " + getArea() + " sq. units, firstLeg: "
+                + leg1 + " units, secondLeg: " + leg2 + " units, color: " + getColor().name());
     }
 }

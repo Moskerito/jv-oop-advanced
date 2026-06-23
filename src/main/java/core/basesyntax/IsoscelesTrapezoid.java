@@ -5,6 +5,13 @@ public class IsoscelesTrapezoid extends Figure {
     private int base2;
     private int side;
 
+    public IsoscelesTrapezoid(int base1, int base2, int side, Color color) {
+        this.base1 = base1;
+        this.base2 = base2;
+        this.side = side;
+        setColor(color);
+    }
+
     @Override
     double getArea() {
         double x = (double) Math.abs(base2 - base1) / 2;
@@ -14,7 +21,8 @@ public class IsoscelesTrapezoid extends Figure {
 
     @Override
     public void draw() {
-        System.out.println("This is an isosceles trapezoid with bases " + base1 + " and "
-        + base2 + " and sides of " + side + " making an area of " + getArea());
+        System.out.println("Figure: isosceles trapezoid, area: " + getArea()
+                + " sq. units, first base: " + base1 + " units, second base: " + base2
+                + " units, side: " + side + " units, color: " + getColor().name());
     }
 }

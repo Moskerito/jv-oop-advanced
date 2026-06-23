@@ -4,6 +4,12 @@ public class Rectangle extends Figure {
     private int height;
     private int width;
 
+    public Rectangle(int height, int width, Color color) {
+        this.height = height;
+        this.width = width;
+        setColor(color);;
+    }
+
     @Override
     double getArea() {
         return height * width;
@@ -11,7 +17,7 @@ public class Rectangle extends Figure {
 
     @Override
     public void draw() {
-        System.out.println("This is a rectangle with the height " + height + ", width "
-        + width + " and area " + getArea());
+        System.out.println("Figure: rectangle, area: " + getArea() + " sq. units, height: "
+                + height + " units, width: " + width + " units, color: " + getColor().name());
     }
 }

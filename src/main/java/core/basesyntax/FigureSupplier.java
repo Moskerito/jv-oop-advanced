@@ -6,41 +6,47 @@ public class FigureSupplier {
     public static final int PARAMS_BOUND = 100;
     public static final int DEFAULT_RADIUS = 10;
     public static final int INDEX_BOUND = 5;
-    private final ColorSupplier colorSupplier = new ColorSupplier();
+    private static final ColorSupplier colorSupplier = new ColorSupplier();
+    private static String randomColor;
     private final Random random = new Random();
+    private final int figureIndex = random.nextInt(INDEX_BOUND);
 
     public Figure getRandomFigure() {
-        int figureIndex = random.nextInt(INDEX_BOUND);
+        randomColor = colorSupplier.getRandomColor();
         switch (figureIndex) {
             case 0: {
-                int radius = random.nextInt(PARAMS_BOUND);
-                return new Circle(radius, colorSupplier.getRandomColor());
+                int radius = getRandomSize();
+                return new Circle(radius, randomColor);
             }
             case 1: {
-                int base1 = random.nextInt(PARAMS_BOUND);
-                int base2 = random.nextInt(PARAMS_BOUND);
-                int side = random.nextInt(PARAMS_BOUND);
-                return new IsoscelesTrapezoid(base1, base2, side, colorSupplier.getRandomColor());
+                int firstBase = getRandomSize();
+                int secondBase = getRandomSize();
+                int side = getRandomSize();
+                return new IsoscelesTrapezoid(firstBase, secondBase, side, randomColor);
             }
             case 2: {
-                int heigth = random.nextInt(PARAMS_BOUND);
-                int width = random.nextInt(PARAMS_BOUND);
-                return new Rectangle(heigth, width, colorSupplier.getRandomColor());
+                int heigth = getRandomSize();
+                int width = getRandomSize();
+                return new Rectangle(heigth, width, randomColor);
             }
             case 3: {
-                int leg1 = random.nextInt(PARAMS_BOUND);
-                int leg2 = random.nextInt(PARAMS_BOUND);
-                return new RightTriangle(leg1, leg2, colorSupplier.getRandomColor());
+                int firstLeg = getRandomSize();
+                int secondLeg = getRandomSize();
+                return new RightTriangle(firstLeg, secondLeg, randomColor);
             }
             case 4: {
-                int side = random.nextInt(PARAMS_BOUND);
-                return new Square(side, colorSupplier.getRandomColor());
+                int side = getRandomSize();
+                return new Square(side, randomColor);
             }
             default: throw new IllegalArgumentException("Unknown figure type: " + figureIndex);
         }
     }
 
     public Figure getDefaultFigure() {
-        return new Circle(DEFAULT_RADIUS, "WHITE");
+        return new Circle(DEFAULT_RADIUS, Color.WHITE.name());
+    }
+
+    private int getRandomSize() {
+        return random.nextInt(PARAMS_BOUND + 1);
     }
 }
